@@ -31,7 +31,7 @@ INSTALLED_APPS = [
     "django.contrib.messages",
     "django.contrib.staticfiles",
     "posts",
-    "rest_framework"
+    "rest_framework",
 ]
 
 MIDDLEWARE = [
@@ -69,16 +69,19 @@ WSGI_APPLICATION = "Dunno.wsgi.application"
 # https://docs.djangoproject.com/en/3.1/ref/settings/#databases
 
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'postgres',
-        'USER': 'postgres',
-        'PASSWORD': 'postgres',
-        'HOST': 'db',
-        'PORT': 5432,
+    "default": {
+        "ENGINE": "django.db.backends.postgresql",
+        "NAME": "postgres",
+        "USER": "postgres",
+        "PASSWORD": "postgres",
+        "HOST": "db",
+        "PORT": 5432,
     }
 }
-
+REST_FRAMEWORK = {
+    # Use Django's standard `django.contrib.auth` permissions,
+    # or allow read-only access for unauthenticated users.
+}
 
 # Password validation
 # https://docs.djangoproject.com/en/3.1/ref/settings/#auth-password-validators
@@ -89,16 +92,13 @@ AUTH_PASSWORD_VALIDATORS = [
         + "UserAttributeSimilarityValidator",
     },
     {
-        "NAME": "django.contrib.auth.password_validation."
-        + "MinimumLengthValidator",
+        "NAME": "django.contrib.auth.password_validation." + "MinimumLengthValidator",
     },
     {
-        "NAME": "django.contrib.auth.password_validation."
-        + "CommonPasswordValidator",
+        "NAME": "django.contrib.auth.password_validation." + "CommonPasswordValidator",
     },
     {
-        "NAME": "django.contrib.auth.password_validation."
-        + "NumericPasswordValidator",
+        "NAME": "django.contrib.auth.password_validation." + "NumericPasswordValidator",
     },
 ]
 

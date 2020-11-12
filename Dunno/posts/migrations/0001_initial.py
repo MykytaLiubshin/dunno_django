@@ -9,17 +9,31 @@ class Migration(migrations.Migration):
 
     initial = True
 
-    dependencies = [
-    ]
+    dependencies = []
 
     operations = [
         migrations.CreateModel(
-            name='Post',
+            name="Post",
             fields=[
-                ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('author_name', models.CharField(max_length=200)),
-                ('content', models.CharField(max_length=1000)),
-                ('creation_date', models.DateTimeField(default=datetime.datetime(2020, 11, 12, 15, 7, 47, 814865, tzinfo=utc))),
+                (
+                    "id",
+                    models.AutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("author_name", models.CharField(max_length=200)),
+                ("content", models.CharField(max_length=1000)),
+                (
+                    "creation_date",
+                    models.DateTimeField(
+                        default=datetime.datetime(
+                            2020, 11, 12, 15, 7, 47, 814865, tzinfo=utc
+                        )
+                    ),
+                ),
             ],
         ),
     ]
