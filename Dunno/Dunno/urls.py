@@ -1,8 +1,11 @@
 from django.urls import path, include
-from rest_framework import routers, serializers, viewsets
-from posts.api.views.post_views import PostListCreateAPIView, PostDetailsAPIView
+from rest_framework import routers
+from posts.api.views.post_views import (
+    PostListCreateAPIView,
+    PostDetailsAPIView,
+)
+from posts.views import upvote_a_post, redirect_post_link
 
-from posts.views import upvote_a_post
 
 router = routers.DefaultRouter()
 
@@ -11,7 +14,11 @@ router = routers.DefaultRouter()
 urlpatterns = [
     path("", include(router.urls)),
     path(r"/posts/", PostListCreateAPIView),
-    path("api-auth/", include("rest_framework.urls", namespace="rest_framework")),
-    path('posts/', PostListCreateAPIView.as_view(), name='api-post-list'),
-    path('posts/upvote_<str:identificator>/', upvote_a_post),
+    path(
+        "api-auth/", include("rest_framework.urls", namespace="rest_framework")
+    ),
+    path("posts/", PostListCreateAPIView.as_view(), name="api-post-list"),
+    path("posts/id_<str:pk>", PostDetailsAPIView.as_view()),
+    path("posts/upvote_<str:identificator>/", upvote_a_post),
+    path("posts/link_<str:identificator>/", redirect_post_link),
 ]
