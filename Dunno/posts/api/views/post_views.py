@@ -2,8 +2,9 @@ from django.shortcuts import get_object_or_404
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import status
+
 from posts.api.serializers.post import PostSerializer
-from posts.models import Post
+from posts.models import Post, Comment
 
 
 class ListPosts(APIView):
@@ -32,5 +33,10 @@ class ListPosts(APIView):
 
     def delete(self, request, identificator):
         post = get_object_or_404(Post, id=identificator)
+        children = post.children
+
+        for child in children:
+            Comment.objects.filter(id = child).delete()
+
         post.delete()
         return Response(f"Post {identificator} deleted successfully")

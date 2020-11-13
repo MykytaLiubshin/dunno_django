@@ -1,10 +1,10 @@
+from django.shortcuts import get_object_or_404
 from rest_framework.views import APIView
 from rest_framework.response import Response
+from rest_framework import status
 
 from posts.models import Comment, Post
 from posts.api.serializers.comment import CommentSerializer
-from rest_framework import status
-from django.shortcuts import get_object_or_404
 
 
 class ListComments(APIView):
@@ -50,10 +50,11 @@ class ListComments(APIView):
 
     def delete(self, request, pk):
         comment = get_object_or_404(Comment, id=pk)
-        parent = Post.objects.filter(id=comment.post_id)
-        print(parent)
+        parent = Post.objects.filter(id = comment.post_id)
+        
         _ch = parent[0].children
-        _ch = list(filter(lambda ind: ind != comment.id, _ch))
+        _ch = list(filter( lambda ind: ind != comment.id, _ch  ) )
+
         parent.update(children=_ch)
         comment.delete()
         return Response(f"Comment {pk} deleted successfully")
