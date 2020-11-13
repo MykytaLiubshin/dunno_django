@@ -33,6 +33,7 @@ INSTALLED_APPS = [
     "posts",
     "rest_framework",
     "corsheaders",
+    "background_task",
 ]
 
 MIDDLEWARE = [
@@ -132,3 +133,8 @@ STATIC_URL = "/static/"
 
 CORS_ORIGIN_ALLOW_ALL = False
 CORS_ORIGIN_WHITELIST = ("http://localhost:8000",)
+
+# BACKGROUND
+MAX_ATTEMPTS = 10
+
+BACKGROUND_TASK_RUN_ASYNC = True

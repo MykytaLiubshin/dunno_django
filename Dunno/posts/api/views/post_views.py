@@ -8,9 +8,9 @@ from django.shortcuts import get_object_or_404
 
 
 class ListPosts(APIView):
-    def get(self, request, format=None, pk=None):
-        if pk is not None:
-            posts = Post.objects.filter(id=pk)
+    def get(self, request, format=None, identificator=None):
+        if identificator is not None:
+            posts = Post.objects.filter(id=identificator)
         else:
             posts = Post.objects.all()
         serializer = PostSerializer(posts, many=True)
@@ -24,14 +24,14 @@ class ListPosts(APIView):
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
     def patch(self, request, *args, **kwargs):
-        post = get_object_or_404(Post, pk=kwargs["pk"])
+        post = get_object_or_404(Post, identificator=kwargs["identificator"])
         serializer = PostSerializer(post, data=request.data, partial=True)
         if serializer.is_valid():
             post = serializer.save()
             return Response(PostSerializer(post).data)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
-    def delete(self, request, pk):
-        post = get_object_or_404(Post, id=pk)
+    def delete(self, request, identificator):
+        post = get_object_or_404(Post, id=identificator)
         post.delete()
-        return Response(f"Post {pk} deleted successfully")
+        return Response(f"Post {identificator} deleted successfully")

@@ -1,7 +1,5 @@
 from rest_framework import serializers
-from posts.models import Comment, Post
-from django.shortcuts import get_object_or_404
-from django.http import HttpResponse
+from posts.models import Comment
 
 
 class CommentSerializer(serializers.ModelSerializer):

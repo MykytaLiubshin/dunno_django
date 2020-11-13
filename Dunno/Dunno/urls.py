@@ -1,8 +1,5 @@
 from django.urls import path, include
 from rest_framework import routers
-from posts.api.views.post_views import ListPosts
-from posts.api.views.comment_views import ListComments
-from posts.views import upvote_a_post, redirect_post_link
 
 
 router = routers.DefaultRouter()
