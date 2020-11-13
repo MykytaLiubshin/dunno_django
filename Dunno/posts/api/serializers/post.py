@@ -6,13 +6,16 @@ class PostSerializer(serializers.ModelSerializer):
     class Meta:
         model = Post
         fields = (
+            "id",
             "title",
             "link",
             "creation_date",
             "upvotes",
             "author_name",
+            "children"
         )
 
-    def post(self, data):
+    def create(self, data):
         instance = Post.objects.create(**data)
+        print(instance)
         return instance
