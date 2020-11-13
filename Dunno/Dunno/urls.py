@@ -9,7 +9,8 @@ router = routers.DefaultRouter()
 urlpatterns = [
     path("", include(router.urls)),
     path(
-        "api-auth/", include("rest_framework.urls", namespace="rest_framework")
+        "api-auth/",
+        include("rest_framework.urls", namespace="rest_framework"),
     ),
     path("posts/", include("posts.posts_urls")),
     path("comments/", include("posts.comments_urls")),

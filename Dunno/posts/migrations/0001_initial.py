@@ -28,7 +28,9 @@ class Migration(migrations.Migration):
                 ("content", models.CharField(max_length=400)),
                 (
                     "creation_date",
-                    models.DateTimeField(default=django.utils.timezone.now),
+                    models.DateTimeField(
+                        default=django.utils.timezone.now
+                    ),
                 ),
                 ("post_id", models.IntegerField()),
             ],
@@ -49,7 +51,9 @@ class Migration(migrations.Migration):
                 ("link", models.CharField(max_length=200)),
                 (
                     "creation_date",
-                    models.DateTimeField(default=django.utils.timezone.now),
+                    models.DateTimeField(
+                        default=django.utils.timezone.now
+                    ),
                 ),
                 ("upvotes", models.IntegerField(default=0)),
                 ("author_name", models.CharField(max_length=200)),

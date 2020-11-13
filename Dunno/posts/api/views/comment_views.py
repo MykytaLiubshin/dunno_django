@@ -34,9 +34,13 @@ class ListComments(APIView):
             _ch.append(serializer.data["id"])
             parent.update(children=_ch)
 
-            return Response(serializer.data, status=status.HTTP_201_CREATED)
+            return Response(
+                serializer.data, status=status.HTTP_201_CREATED
+            )
 
-        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+        return Response(
+            serializer.errors, status=status.HTTP_400_BAD_REQUEST
+        )
 
     def patch(self, request, *args, **kwargs):
         comment = get_object_or_404(Comment, pk=kwargs["pk"])
@@ -46,14 +50,16 @@ class ListComments(APIView):
         if serializer.is_valid():
             comment = serializer.save()
             return Response(CommentSerializer(comment).data)
-        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+        return Response(
+            serializer.errors, status=status.HTTP_400_BAD_REQUEST
+        )
 
     def delete(self, request, pk):
         comment = get_object_or_404(Comment, id=pk)
-        parent = Post.objects.filter(id = comment.post_id)
-        
+        parent = Post.objects.filter(id=comment.post_id)
+
         _ch = parent[0].children
-        _ch = list(filter( lambda ind: ind != comment.id, _ch  ) )
+        _ch = list(filter(lambda ind: ind != comment.id, _ch))
 
         parent.update(children=_ch)
         comment.delete()
