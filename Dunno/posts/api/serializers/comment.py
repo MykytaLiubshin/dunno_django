@@ -4,18 +4,11 @@ from django.shortcuts import get_object_or_404
 from django.http import HttpResponse
 
 
-
 class CommentSerializer(serializers.ModelSerializer):
     class Meta:
         model = Comment
-        fields = (
-            'id',
-            'author_name',
-            'content',
-            'creation_date',
-            'post_id'
-        )
-    
+        fields = ("id", "author_name", "content", "creation_date", "post_id")
+
     def create(self, validated_data):
         inst = Comment(**validated_data)
         inst.save()
@@ -31,4 +24,3 @@ class CommentSerializer(serializers.ModelSerializer):
         else:
             return None
         return inst
-    

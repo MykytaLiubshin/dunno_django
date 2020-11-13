@@ -12,7 +12,7 @@ class PostSerializer(serializers.ModelSerializer):
             "creation_date",
             "upvotes",
             "author_name",
-            "children"
+            "children",
         )
 
     def create(self, data):

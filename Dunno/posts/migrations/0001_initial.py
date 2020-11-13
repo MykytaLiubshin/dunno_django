@@ -9,30 +9,59 @@ class Migration(migrations.Migration):
 
     initial = True
 
-    dependencies = [
-    ]
+    dependencies = []
 
     operations = [
         migrations.CreateModel(
-            name='Comment',
+            name="Comment",
             fields=[
-                ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('author_name', models.CharField(max_length=200)),
-                ('content', models.CharField(max_length=400)),
-                ('creation_date', models.DateTimeField(default=django.utils.timezone.now)),
-                ('post_id', models.IntegerField()),
+                (
+                    "id",
+                    models.AutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("author_name", models.CharField(max_length=200)),
+                ("content", models.CharField(max_length=400)),
+                (
+                    "creation_date",
+                    models.DateTimeField(default=django.utils.timezone.now),
+                ),
+                ("post_id", models.IntegerField()),
             ],
         ),
         migrations.CreateModel(
-            name='Post',
+            name="Post",
             fields=[
-                ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('title', models.CharField(max_length=200)),
-                ('link', models.CharField(max_length=200)),
-                ('creation_date', models.DateTimeField(default=django.utils.timezone.now)),
-                ('upvotes', models.IntegerField(default=0)),
-                ('author_name', models.CharField(max_length=200)),
-                ('children', django.contrib.postgres.fields.ArrayField(base_field=models.IntegerField(blank=True), blank=True, default=list, size=None)),
+                (
+                    "id",
+                    models.AutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("title", models.CharField(max_length=200)),
+                ("link", models.CharField(max_length=200)),
+                (
+                    "creation_date",
+                    models.DateTimeField(default=django.utils.timezone.now),
+                ),
+                ("upvotes", models.IntegerField(default=0)),
+                ("author_name", models.CharField(max_length=200)),
+                (
+                    "children",
+                    django.contrib.postgres.fields.ArrayField(
+                        base_field=models.IntegerField(blank=True),
+                        blank=True,
+                        default=list,
+                        size=None,
+                    ),
+                ),
             ],
         ),
     ]

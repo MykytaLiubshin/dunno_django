@@ -11,7 +11,10 @@ class Post(models.Model):
     creation_date = models.DateTimeField(default=timezone.now)
     upvotes = models.IntegerField(default=0)
     author_name = models.CharField(max_length=200)
-    children = ArrayField( models.IntegerField(blank = True), blank = True, default=list)
+    children = ArrayField(
+        models.IntegerField(blank=True), blank=True, default=list
+    )
+
     def __str__(self):
         return f"""
         title = {self.title},
