@@ -50,5 +50,10 @@ class ListComments(APIView):
 
     def delete(self, request, pk):
         comment = get_object_or_404(Comment, id=pk)
+        parent = Post.objects.filter(id=comment.post_id)
+        print(parent)
+        _ch = parent[0].children
+        _ch = list(filter(lambda ind: ind != comment.id, _ch))
+        parent.update(children=_ch)
         comment.delete()
         return Response(f"Comment {pk} deleted successfully")
