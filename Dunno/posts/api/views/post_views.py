@@ -1,10 +1,9 @@
+from django.shortcuts import get_object_or_404
 from rest_framework.views import APIView
 from rest_framework.response import Response
-
-from posts.models import Post
-from posts.api.serializers.post import PostSerializer
 from rest_framework import status
-from django.shortcuts import get_object_or_404
+from posts.api.serializers.post import PostSerializer
+from posts.models import Post
 
 
 class ListPosts(APIView):
