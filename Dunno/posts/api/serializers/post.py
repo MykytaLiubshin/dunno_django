@@ -14,8 +14,3 @@ class PostSerializer(serializers.ModelSerializer):
             "author_name",
             "children",
         )
-
-    def create(self, data):
-        instance = Post.objects.create(**data)
-        print(instance)
-        return instance
