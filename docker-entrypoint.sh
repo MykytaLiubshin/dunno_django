@@ -6,4 +6,4 @@ python Dunno/manage.py migrate
 
 # Start server
 echo "Starting server"
-python Dunno/manage.py runserver https://test-task-django.herokuapp.com/
+python Dunno/manage.py runserver 0.0.0.0:8000
