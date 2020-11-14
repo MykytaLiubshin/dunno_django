@@ -11,11 +11,10 @@ services:
     build:
       context: .
       dockerfile: web.dockerfile
-    command: python Dunno/manage.py runserver 0.0.0.0:8000
+    command: ./docker-entrypoint.sh 
     volumes:
       - .:/code
     ports:
       - "8000:8000"
     depends_on:
       - db
-
